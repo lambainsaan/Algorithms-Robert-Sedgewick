@@ -7,7 +7,9 @@ class UF
 
   int *N;
   int size;
+#ifdef QUICKUNIONIMP
   int *sz;
+#endif
 
   int root (int idx) {
     while(idx != this->N[idx]) {
@@ -25,7 +27,9 @@ public:
   UF(int size){
     int i = 0;
     this->N = new int[size];
+    #ifdef QUICKUNIONIMP
     this->sz = new int[size];
+    #endif
     this->size = size;
     while(i < size && (this->sz[i] = 1)) this->N[i] = i++;
   };
