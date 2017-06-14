@@ -7,13 +7,13 @@ class UF
 
   int *N;
   int size;
-#ifdef QUICKUNIONIMP
+  #ifdef quickunionimproved
   int *sz;
-#endif
+  #endif
 
   int root (int idx) {
     while(idx != this->N[idx]) {
-      #ifdef QUICKUNIONIMP
+      #ifdef quickunionimproved
       this->N[idx] = this->N[this->N[idx]];
       #endif
       idx = this->N[idx];
@@ -23,16 +23,7 @@ class UF
 
 public:
 
-
-  UF(int size){
-    int i = 0;
-    this->N = new int[size];
-    #ifdef QUICKUNIONIMP
-    this->sz = new int[size];
-    #endif
-    this->size = size;
-    while(i < size && (this->sz[i] = 1)) this->N[i] = i++;
-  };
+  UF(int);
 
   void print() {
     int i = 0;
@@ -41,9 +32,7 @@ public:
 
   void union_UF(int, int);
 
-  bool connected(int p, int q){
-    return this->root(p) == this->root(q);
-  }
+  bool connected(int , int);
 
   #ifdef CATCH_CONFIG_MAIN
   friend class test_cases_helpers;

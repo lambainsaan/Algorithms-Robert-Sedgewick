@@ -6,7 +6,15 @@
  *          whose N equals N[p] to N[q].
  *
  */
-
+UF::UF(int size){
+  /*
+    Initialization of the union data structure.
+   */
+  int i = 0;
+  this->N = new int[size];
+  this->size = size;
+  while(i < size ) *(this->N + i) = i++;
+};
 
 void UF::union_UF(int p, int q){
   int i = 0, pval = *(this->N + p),
@@ -16,4 +24,9 @@ void UF::union_UF(int p, int q){
       *(this->N + i) = qval;
     i++;
   };
-}
+};
+
+
+bool UF::connected(int p, int q){
+  return this->root(p) == this->root(q);
+};

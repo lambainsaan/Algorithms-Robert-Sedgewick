@@ -5,16 +5,17 @@
 
 #include "unionfind.h"
 
-#ifdef UNIONFINDQUICKFIND
-#include "unionfindquickfind.cpp"
+#ifdef quickfind
+#include "quickfind.cpp"
 #endif
 
-#ifdef UNIONFINDQUICKUNION
-#include "unionfindquickunion.cpp"
+#ifdef quickunion
+#include "quickunion.cpp"
 #endif
 
-#ifdef QUICKUNIONIMP
-#include "qucikunionimp.cpp"
+#ifdef quickunionimproved
+#include "quickunionimproved.cpp"
+
 #endif
 
 class test_cases_helpers
@@ -133,7 +134,7 @@ TEST_CASE("test functionality of connected method") {
 }
 
 
-#ifdef QUICKUNIONIMP
+#ifdef quickunionimproved
 
 TEST_CASE("Test functionality of path compression, in root method."){
   UF test_pathcompression(11);
