@@ -89,6 +89,7 @@ TEST_CASE( "give proper result when we do union" ) {
   REQUIRE( test_union.connected(6,4) == true);
 }
 
+#ifndef quickfind
 
 TEST_CASE("test functionality of root method") {
   /*
@@ -133,6 +134,7 @@ TEST_CASE("test functionality of connected method") {
 
 }
 
+#endif
 
 #ifdef quickunionimproved
 

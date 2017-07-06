@@ -8,25 +8,35 @@
  */
 UF::UF(int size){
   /*
-    Initialization of the union data structure.
+   * Initialization of the union data structure.
+   * Takes time propotional to O(N).
    */
   int i = 0;
   this->N = new int[size];
   this->size = size;
-  while(i < size ) *(this->N + i) = i++;
+  while(i < size ) this->N [i] = i++;
 };
 
 void UF::union_UF(int p, int q){
-  int i = 0, pval = *(this->N + p),
-   qval = *(this->N + q);
+  /*
+   * Does a union of the two components containing p and q.
+   * It takes time propotional to O(N).
+   */
+  int i = 0, pval = this->N [p],
+   qval = this->N [q];
   while (i < this->size) {
-    if (*(this->N + i) == pval )
-      *(this->N + i) = qval;
+    if (this->N [i] == qval ) {
+      this->N [i] = pval;
+    }
     i++;
   };
 };
 
 
 bool UF::connected(int p, int q){
-  return this->root(p) == this->root(q);
+  /*
+   * Returns True or False depending on the fact if p is connected to q.
+   * Takes time propotional to O(1)
+   */
+  return this->N[p] == this->N[q];
 };
