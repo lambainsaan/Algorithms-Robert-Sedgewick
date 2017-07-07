@@ -7,6 +7,9 @@ class UF
 
   int *N;
   int size;
+  #ifdef quickunionheight
+  int *height;
+  #endif
   #ifdef quickunionimproved
   int *sz;
   #endif

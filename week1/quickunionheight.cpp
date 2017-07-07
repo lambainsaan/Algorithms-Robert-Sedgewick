@@ -13,14 +13,28 @@
     */
    int i = 0;
    this->N = new int[size];
+   this->height = new int[size];
    this->size = size;
-   while(i < size ) *(this->N + i) = i++;
+   while(i < size ) {
+     this->height [i] = 1;
+     this->N [i] = i++;
+   };
  };
 
 void UF::union_UF(int p, int q){
-  this->N[this->root(p)] = this->root(q);
+  int rootp = this->root(p), rootq = this->root(q);
+  if (this->height[rootp] > this->height[rootq]){
+    this->N[rootq] = rootp;
+  }
+  else if(this->height[rootp] < this->height[rootq]){
+    this->N[rootp] = rootq;
+  }
+  else{
+    this->N[rootq] = rootp;
+    this->height[rootp]++;
+  };
 };
 
 bool UF::connected(int p, int q){
   return this->root(p) == this->root(q);
-}
+};

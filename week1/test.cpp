@@ -18,6 +18,10 @@
 
 #endif
 
+#ifdef quickunionheight
+#include "quickunionheight.cpp"
+#endif
+
 class test_cases_helpers
 { /*
    * This is a helper class which is a friend of UF class,
